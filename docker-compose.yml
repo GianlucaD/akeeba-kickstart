@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  
+  wordpress:
+    image: gianlucad/akeeba-kickstart
+    container_name: wordpress
+    links:
+      - mysql:mysql
+    ports:
+      - 80:8080
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mariadb:latest
+    restart: always
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    links:
+    - mysql:db
+    ports:
+    - 8080:80

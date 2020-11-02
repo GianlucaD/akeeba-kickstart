@@ -31,6 +31,14 @@ See the PHP info on http://localhost, or the static html page on http://localhos
 Or mount your own code to be served by PHP-FPM & Nginx
 
     docker run -p 80:8080 -v ~/my-codebase:/var/www/html gianlucad/akeeba-kickstart
+## using docker-compose 
+    see docker-compose.yml for an example
+
+## copy jpa file inside container
+
+    docker cp myakeebafile.jpa wordpress:/var/www/html
+
+after the copy call kickstart.php (i.e http://localhost/kickstart.php)
 
 ## Configuration
 In [config/](config/) you'll find the default configuration files for Nginx, PHP and PHP-FPM.
