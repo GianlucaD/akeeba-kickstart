@@ -1,7 +1,5 @@
 
-# Docker PHP-FPM 7.3 & Nginx 1.18 on Alpine Linux
-Example PHP-FPM 7.3 & Nginx 1.18 setup for Docker, build on [Alpine Linux](https://www.alpinelinux.org/).
-The image is only +/- 35MB large.
+# Docker Akeeba Kickstart for restoration of akeeba backups with kickstart.php 
 
 Repository: https://github.com/GianlucaD/akeeba-kickstart
 
@@ -21,14 +19,6 @@ Repository: https://github.com/GianlucaD/akeeba-kickstart
 ![nginx 1.18.0](https://img.shields.io/badge/nginx-1.18-brightgreen.svg)
 ![php 7.3](https://img.shields.io/badge/php-7.3-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
-
-### Breaking changes (26/01/2019)
-
-Please note that the new builds since 26/01/2019 are exposing a different port to access Nginx.
-To be able to run Nginx as a non-privileged user, the port it's running on needed
-to change to a non-privileged port (above 1024).
-
-The last build of the old version that exposed port 80 was `gianlucad/akeeba-kickstart:ba1dd422`
 
 ## Usage
 
