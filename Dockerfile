@@ -28,7 +28,7 @@ RUN chown -R nobody.nobody /var/www/html && \
   chown -R nobody.nobody /var/log/nginx
 
 # Define Kickstart version
-ENV AKEEBA_KICKSTART_VERSION 7-0-2
+ENV AKEEBA_KICKSTART_VERSION 7-1-0
 
 # Download package and extract to web volume
 RUN v=`echo $AKEEBA_KICKSTART_VERSION | tr "." "-"` \
