@@ -1,19 +1,19 @@
-FROM alpine:3.12
+FROM alpine:3.13
 LABEL Maintainer="Gianluca Daffre <luke@daffre.com>" \
-      Description="Akeeba Kickstart container based on a Lightweight container with Nginx 1.18 & PHP-FPM 7.3 based on Alpine Linux."
+      Description="Akeeba Kickstart container based on a Lightweight container with Nginx 1.18 & PHP-FPM 8.0.30 based on Alpine Linux."
 
 # Install packages and remove default server definition
-RUN apk --no-cache add php7 php7-fpm php7-simplexml php7-opcache php7-mysqli php7-json php7-openssl php7-curl \
-    php7-zlib php7-xml php7-phar php7-intl php7-pear php7-dom php7-xmlreader php7-ctype php7-session \
-    php7-mbstring php7-gd nginx supervisor curl php7-zip&& \
+RUN apk --no-cache add php8 php8-fpm php8-simplexml php8-opcache php8-mysqli php8-json php8-openssl php8-curl \
+    php8-zlib php8-xml php8-phar php8-intl php8-pear php8-dom php8-xmlreader php8-ctype php8-session \
+    php8-mbstring php8-gd nginx supervisor curl php8-zip && \
     rm /etc/nginx/conf.d/default.conf
 
 # Configure nginx
 COPY config/nginx.conf /etc/nginx/nginx.conf
 
 # Configure PHP-FPM
-COPY config/fpm-pool.conf /etc/php7/php-fpm.d/www.conf
-COPY config/php.ini /etc/php7/conf.d/custom.ini
+COPY config/fpm-pool.conf /etc/php8/php-fpm.d/www.conf
+COPY config/php.ini /etc/php8/conf.d/custom.ini
 
 # Configure supervisord
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
@@ -28,12 +28,12 @@ RUN chown -R nobody.nobody /var/www/html && \
   chown -R nobody.nobody /var/log/nginx
 
 # Define Kickstart version
-ENV AKEEBA_KICKSTART_VERSION 7-1-0
+ENV AKEEBA_KICKSTART_VERSION 7-1-1
 
 # Download package and extract to web volume
 RUN v=`echo $AKEEBA_KICKSTART_VERSION | tr "." "-"` \
 	&& curl -o kickstart.zip -SL https://www.akeeba.com/download/akeeba-kickstart/${v}/kickstart-core-${v}-zip.zip \
-	&& php -r '$z = new ZipArchive; $z->open("kickstart.zip"); $z->extractTo("./kickstart");' \
+	&& php8 -r '$z = new ZipArchive; $z->open("kickstart.zip"); $z->extractTo("./kickstart");' \
 	&& mv kickstart/kickstart.php /var/www/html/ \
 	&& rm -rf kickstart*
 	

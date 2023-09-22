@@ -6,7 +6,7 @@ Repository: https://github.com/GianlucaD/akeeba-kickstart
 
 * Built on the lightweight and secure Alpine Linux distribution
 * Very small Docker image size (+/-35MB)
-* Uses PHP 7.3 for better performance, lower CPU usage & memory footprint
+* Uses PHP 8.0.13 for better performance, lower CPU usage & memory footprint
 * Optimized for 100 concurrent users
 * Optimized to only use resources when there's traffic (by using PHP-FPM's on-demand PM)
 * The servers Nginx, PHP-FPM and supervisord run under a non-privileged user (nobody) to make it more secure
@@ -17,7 +17,7 @@ Repository: https://github.com/GianlucaD/akeeba-kickstart
 [![Docker Pulls](https://img.shields.io/docker/pulls/gianlucad/akeeba-kickstart.svg)](https://hub.docker.com/r/gianlucad/akeeba-kickstart/)
 [![Docker image layers](https://images.microbadger.com/badges/image/gianlucad/akeeba-kickstart.svg)](https://microbadger.com/images/gianlucad/akeeba-kickstart)
 ![nginx 1.18.0](https://img.shields.io/badge/nginx-1.18-brightgreen.svg)
-![php 7.3](https://img.shields.io/badge/php-7.3-brightgreen.svg)
+![php 8.0.13](https://img.shields.io/badge/php-8.0.13-brightgreen.svg)
 ![License MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 
 ## Usage
@@ -50,11 +50,11 @@ Nginx configuration:
 
 PHP configuration:
 
-    docker run -v "`pwd`/php-setting.ini:/etc/php7/conf.d/settings.ini" gianlucad/akeeba-kickstart
+    docker run -v "`pwd`/php-setting.ini:/etc/php8/conf.d/settings.ini" gianlucad/akeeba-kickstart
 
 PHP-FPM configuration:
 
-    docker run -v "`pwd`/php-fpm-settings.conf:/etc/php7/php-fpm.d/server.conf" gianlucad/akeeba-kickstart
+    docker run -v "`pwd`/php-fpm-settings.conf:/etc/php8/php-fpm.d/server.conf" gianlucad/akeeba-kickstart
 
 _Note; Because `-v` requires an absolute path I've added `pwd` in the example to return the absolute path to the current directory_
 

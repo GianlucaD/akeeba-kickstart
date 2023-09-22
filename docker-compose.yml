@@ -3,7 +3,7 @@ version: '3.1'
 services:
   
   wordpress:
-    image: gianlucad/akeeba-kickstart
+    image: akeeba
     container_name: wordpress
     links:
       - mysql:mysql
